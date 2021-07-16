@@ -5,5 +5,17 @@ export default {
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
-  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.'
+  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  playerCreateSuccess: 'Player Created!',
+  playerCreateFailure: 'Player did not create successfully',
+  playerShowSuccess: 'Player Successfully Found!',
+  playerShowFailure: 'Did not find Player',
+  playerDeleteSuccess: 'Player has been deleted!',
+  playerDeleteFailure: 'Player not deleted',
+  playerUpdateSuccess: 'Player Updated Successfully',
+  playerUpdateFailure: 'Player did not update',
+  gamelogCreateSuccess: 'Game Successfully Created!',
+  gamelogCreateFailure: 'Game not Created',
+  gamelogDeleteSuccess: 'GameLog Successfully Deleted!',
+  gamelogDeleteFailure: 'Gamelog not Deleted'
 }
