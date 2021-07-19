@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const indexPlayer = () => {
+export const indexPlayers = () => {
   return axios({
     method: 'GET',
     url: apiUrl + '/players'

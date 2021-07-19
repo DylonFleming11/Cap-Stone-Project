@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { showPlayer, deletePlayer } from '../../api/players'
 import messages from '../AutoDismissAlert/messages'
 // import GameLog from './../GameLog/GameLog'
-import GameLogForm from '../shared/GameLogForm'
+import GameLogForm from '../Shared/GameLogForm'
 import DeleteGameLog from '../GameLog/DeleteGameLog'
 import { createGameLog } from '../../api/gamelog'
 

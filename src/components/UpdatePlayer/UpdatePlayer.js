@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
-import PlayerForm from '../shared/PlayerForm'
+import PlayerForm from '../Shared/PlayerForm'
 import { updatePlayer, showPlayer } from '../../api/players'
 import messages from '../AutoDismissAlert/messages'
 

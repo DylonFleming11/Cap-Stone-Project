@@ -10,7 +10,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import Players from './components/Players/Players'
-import CreatePlayer from './components/CreateEntry/CreateEntry'
+import CreatePlayer from './components/CreatePlayer/CreatePlayer'
 import ShowPlayer from './components/ShowPlayer/ShowPlayer'
 import UpdatePlayer from './components/UpdatePlayer/UpdatePlayer'
 

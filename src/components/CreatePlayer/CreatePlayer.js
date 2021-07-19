@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
-import EntryForm from '../shared/EntryForm'
+import PlayerForm from '../Shared/PlayerForm'
 import { createPlayer } from '../../api/players'
 import messages from '../AutoDismissAlert/messages'
 
@@ -55,7 +55,7 @@ class PlayerCreate extends Component {
       <Fragment>
         <div>
           <h2>Create a Player Page</h2>
-          <EntryForm
+          <PlayerForm
             entry={this.state.player}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}

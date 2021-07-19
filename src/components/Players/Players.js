@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
-import { indexEntries } from '../../api/entries'
+import { indexPlayers } from '../../api/players'
 
 class Players extends Component {
   constructor () {
@@ -12,7 +12,7 @@ class Players extends Component {
   }
   componentDidMount () {
     const { user, msgAlert } = this.props
-    indexEntries(user)
+    indexPlayers(user)
       .then(res => this.setState({ player: res.data.player }))
       .then(() => msgAlert({
         heading: 'Player Index Success!',

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 // import messages from '../AutoDismissAlert/messages'
-import { deleteGameLog } from '../../api/GameLog'
+import { deleteGameLog } from '../../api/gamelog'
 
 class DeleteGameLog extends Component {
   componentDidMount () {
