@@ -4,23 +4,33 @@ import Button from 'react-bootstrap/Button'
 
 const GameLogForm = ({ handleChange, handleSubmit, gamelog, playerId }) => (
   <Form onSubmit={handleSubmit}>
-    <Form.Group controlId="gamelog">
+    <Form.Group controlId="game">
       <Form.Label></Form.Label>
       <Form.Control
         type="text"
-        name="content"
-        value={gamelog.content || ''}
-        placeholder="GameLog goes here"
+        name="game"
+        value={gamelog.game || ''}
+        placeholder="Game goes here"
         onChange={handleChange}
         required
       />
     </Form.Group>
-    <Form.Group controlId="playerId">
+    <Form.Group controlId="yards">
       <Form.Label></Form.Label>
       <Form.Control
         type="hidden"
-        name="playerId"
-        value={gamelog.content || ''}
+        name="yards"
+        value={gamelog.yards || ''}
+        onChange={handleChange}
+        required
+      />
+    </Form.Group>
+    <Form.Group controlId="touchdowns">
+      <Form.Label></Form.Label>
+      <Form.Control
+        type="hidden"
+        name="touchdowns"
+        value={gamelog.touchdowns || ''}
         onChange={handleChange}
         required
       />

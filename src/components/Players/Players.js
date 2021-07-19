@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 import { indexPlayers } from '../../api/players'
 
@@ -7,13 +7,17 @@ class Players extends Component {
   constructor () {
     super()
     this.state = {
-      player: null
+      players: null
     }
   }
   componentDidMount () {
     const { user, msgAlert } = this.props
     indexPlayers(user)
-      .then(res => this.setState({ player: res.data.player }))
+      .then(res => {
+        console.log(res)
+        return res
+      })
+      .then(res => this.setState({ players: res.data.player }))
       .then(() => msgAlert({
         heading: 'Player Index Success!',
         message: 'messages.playerIndexSuccess',
@@ -23,18 +27,18 @@ class Players extends Component {
   }
   render () {
     let playerJsx = ''
-    if (this.state.player === null) {
+    if (this.state.players === null) {
       playerJsx = <Spinner animation="border" variant="info" />
-    } else if (this.state.player.length === 0) {
+    } else if (this.state.players.length === 0) {
       playerJsx = <p>No players to display! Go make some.</p>
     } else {
-      playerJsx = (
-        <ul>
-          {this.state.player.map((player, i) => (
-            <li key={player._id}><Link to={`/players/${player._id}`}>{player.title}</Link></li>
-          ))}
-        </ul>
-      )
+      playerJsx = this.state.players.map(player => (
+        <div className="player" key={player.id}>
+          <h3 className="player-name">{player.name}</h3>
+          <p className="player-position">{player.position}</p>
+          <p className="player-team">{player.team}</p>
+        </div>
+      ))
     }
 
     return (

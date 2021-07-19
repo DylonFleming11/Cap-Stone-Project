@@ -1,50 +1,53 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const indexPlayers = () => {
+export const indexPlayers = (user) => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/players'
+    url: apiUrl + '/players/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
   })
 }
 
 export const showPlayer = (id) => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/players/' + id
+    url: apiUrl + '/players/' + id + '/'
   })
 }
 
 export const createPlayer = (data, user) => {
   return axios({
-    url: apiUrl + '/create-player',
+    url: apiUrl + '/players/',
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${user.token}`
+      'Authorization': `Token ${user.token}`
     },
     data: {
-      entry: data
+      player: data
     }
   })
 }
 
 export const updatePlayer = (data, id, user) => {
   return axios({
-    url: apiUrl + '/players/' + id,
+    url: apiUrl + '/players/' + id + '/',
     method: 'PATCH',
     headers: {
-      'Authorization': `Bearer ${user.token}`
+      'Authorization': `Token ${user.token}`
     },
-    data: { entry: data }
+    data: { player: data }
   })
 }
 
 export const deletePlayer = (id, user) => {
   return axios({
-    url: apiUrl + '/players/' + id,
+    url: apiUrl + '/players/' + id + '/',
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer ${user.token}`
+      'Authorization': `Token ${user.token}`
     }
   })
 }

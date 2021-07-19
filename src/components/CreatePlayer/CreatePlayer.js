@@ -32,6 +32,7 @@ class PlayerCreate extends Component {
     event.preventDefault()
     const { msgAlert, user } = this.props
     const entry = { ...this.state.player, owner: user._id }
+    console.log(user)
     createPlayer(entry, user)
       .then(res => this.setState({ createdId: res.data.player._id }))
       .catch(() => msgAlert({
@@ -56,7 +57,7 @@ class PlayerCreate extends Component {
         <div>
           <h2>Create a Player Page</h2>
           <PlayerForm
-            entry={this.state.player}
+            player={this.state.player}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />

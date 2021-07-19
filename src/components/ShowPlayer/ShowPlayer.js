@@ -13,12 +13,19 @@ class ShowPlayer extends Component {
     this.state = {
       player: null,
       user: null,
-      createdId: null
+      gamelog: {
+        game: '',
+        yards: '',
+        touchdowns: ''
+      },
+      createdId: null,
+      gamelogId: ''
     }
   }
 
   componentDidMount () {
     const { user, match, msgAlert } = this.props
+    console.log(user)
     showPlayer(match.params.id, user)
       .then(res => {
         this.setState({ player: res.data.player })
@@ -51,6 +58,7 @@ class ShowPlayer extends Component {
     const { msgAlert, user } = this.props
     // removed owner
     const gamelog = { ...this.state.gamelog }
+    console.log('handleSubmit', user)
     gamelog.entryId = this.props.match.params.id
     createGameLog(gamelog, user)
       .then(res => this.setState({ createdId: gamelog.entryId }))
@@ -85,6 +93,7 @@ class ShowPlayer extends Component {
   render () {
     const { player } = this.state
     const { user } = this.props
+    console.log(user)
     let playerJsx = ''
     if (player === null || player === undefined) {
       playerJsx = 'loading...'
