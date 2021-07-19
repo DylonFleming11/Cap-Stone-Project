@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { showPlayer, deletePlayer } from '../../api/players'
 import messages from '../AutoDismissAlert/messages'
-import GameLog from './../GameLog/GameLog'
-// import CommentForm from '../shared/CommentForm'
-// import DeleteComment from '../Comment/DeleteComment'
-// import { createComment } from '../../api/comments'
+// import GameLog from './../GameLog/GameLog'
+import GameLogForm from '../shared/GameLogForm'
+import DeleteGameLog from '../GameLog/DeleteGameLog'
+import { createGameLog } from '../../api/gamelog'
 
 class ShowPlayer extends Component {
   constructor () {
@@ -52,7 +52,7 @@ class ShowPlayer extends Component {
     // removed owner
     const gamelog = { ...this.state.gamelog }
     gamelog.entryId = this.props.match.params.id
-    createGamelog(gamelog, user)
+    createGameLog(gamelog, user)
       .then(res => this.setState({ createdId: gamelog.entryId }))
       .then(() => msgAlert({
         heading: 'Create Entry Success!',
@@ -80,6 +80,80 @@ class ShowPlayer extends Component {
         message: messages.playerDeleteFailure,
         variant: 'danger'
       }))
+  }
+
+  render () {
+    const { player } = this.state
+    const { user } = this.props
+    let playerJsx = ''
+    if (player === null || player === undefined) {
+      playerJsx = 'loading...'
+    } else if (user === null) {
+      playerJsx = (
+        <Fragment>
+          <div>
+            <h3>{player.name}</h3>
+            <p>{player.position}</p>
+            <p>{player.team}</p>
+            <p>GameLogs:</p>
+            <ul>
+              {player.gamelogs.map((gamelog) => (
+                <li key={gamelog._id}>
+                  <div>
+                    {gamelog.game}
+                    {gamelog.yards}
+                    {gamelog.touchdowns}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Fragment>
+      )
+    } else if (this.state.createdId) {
+      this.props.history.push('/temp')
+      this.props.history.goBack()
+    } else {
+      playerJsx = (
+        <Fragment>
+          <div>
+            <h3>{player.name}</h3>
+            <p>{player.position}</p>
+            <p>{player.team}</p>
+            <ul>
+              {player.gamelogs.map((gamelog) => (
+                <li key={gamelog._id}>
+                  <div>
+                    {gamelog.game}
+                    {gamelog.yards}
+                    {gamelog.touchdowns}
+                    <div>
+                      <DeleteGameLog id={gamelog._id} user={this.props.user} playerId={this.props.match.params.id} />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <GameLogForm
+              gamelog={this.state.gamelog}
+              playerId={this.props.match.paramas.id}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            <div>
+              <button onClick={this.handleDelete}>Delete Player</button>
+              <Link to={`/players/${this.props.match.params.id}/edit`}>Update Player</Link>
+            </div>
+          </div>
+        </Fragment>
+      )
+    }
+
+    return (
+      <Fragment>
+        {playerJsx}
+      </Fragment>
+    )
   }
 }
 

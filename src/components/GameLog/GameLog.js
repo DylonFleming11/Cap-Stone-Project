@@ -11,7 +11,7 @@ class GameLog extends Component {
     this.state = {
       game: {
         game: '',
-        passingYards: '',
+        yards: '',
         touchDown: ''
       },
       createdId: null

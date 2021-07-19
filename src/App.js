@@ -75,6 +75,12 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create-entry' render={() => (
             <CreatePlayer msgAlert={this.msgAlert} user={user} />
           )} />
+          <Route exact path='/players/:id' user={user} render={() => (
+            <ShowPlayer msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/players/:id/edit' render={() => (
+            <UpdatePlayer msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
       </Fragment>
     )
