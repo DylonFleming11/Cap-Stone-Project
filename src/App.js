@@ -81,6 +81,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/players/:id/edit' render={() => (
             <UpdatePlayer msgAlert={this.msgAlert} user={user} />
           )} />
+          <h1 className=''>Welcome to Football-U!</h1>
+          <h3 className=''>Developed By: Dylon Fleming</h3>
+          <h6> A Full-Stack Project using React & Django!</h6>
+          <p> The Goal of this app is to be able to create a player, and then create GameLogs for that individual player, tracking their stats over games and season.</p>
         </main>
       </Fragment>
     )

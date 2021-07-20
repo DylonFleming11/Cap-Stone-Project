@@ -25,8 +25,11 @@ class ShowPlayer extends Component {
 
   componentDidMount () {
     const { user, match, msgAlert } = this.props
-    console.log(user)
     showPlayer(match.params.id, user)
+      .then(res => {
+        console.log(res.data)
+        return res
+      })
       .then(res => {
         this.setState({ player: res.data.player })
       })
@@ -58,10 +61,9 @@ class ShowPlayer extends Component {
     const { msgAlert, user } = this.props
     // removed owner
     const gamelog = { ...this.state.gamelog }
-    console.log('handleSubmit', user)
-    gamelog.entryId = this.props.match.params.id
+    gamelog.playerId = this.props.match.params.id
     createGameLog(gamelog, user)
-      .then(res => this.setState({ createdId: gamelog.entryId }))
+      .then(res => this.setState({ createdId: gamelog.playerId }))
       .then(() => msgAlert({
         heading: 'Create Entry Success!',
         message: messages.gamelogCreateSuccess,
@@ -93,7 +95,7 @@ class ShowPlayer extends Component {
   render () {
     const { player } = this.state
     const { user } = this.props
-    console.log(user)
+    console.log('this.state.player ', this.state.player)
     let playerJsx = ''
     if (player === null || player === undefined) {
       playerJsx = 'loading...'
@@ -145,7 +147,7 @@ class ShowPlayer extends Component {
             </ul>
             <GameLogForm
               gamelog={this.state.gamelog}
-              playerId={this.props.match.paramas.id}
+              playerId={this.props.match.params.id}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />

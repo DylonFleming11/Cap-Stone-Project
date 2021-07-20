@@ -64,7 +64,7 @@ class PlayerUpdate extends Component {
       <Fragment>
         <h2>Update a Player Page</h2>
         <PlayerForm
-          entry={this.state.player}
+          player={this.state.player}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 import { indexPlayers } from '../../api/players'
 
@@ -13,10 +13,6 @@ class Players extends Component {
   componentDidMount () {
     const { user, msgAlert } = this.props
     indexPlayers(user)
-      .then(res => {
-        console.log(res)
-        return res
-      })
       .then(res => this.setState({ players: res.data.player }))
       .then(() => msgAlert({
         heading: 'Player Index Success!',
@@ -35,8 +31,9 @@ class Players extends Component {
       playerJsx = this.state.players.map(player => (
         <div className="player" key={player.id}>
           <h3 className="player-name">{player.name}</h3>
-          <p className="player-position">{player.position}</p>
-          <p className="player-team">{player.team}</p>
+          <p className="player-position">Position: {player.position}</p>
+          <p className="player-team">Team: {player.team}</p>
+          <Link to={`/players/${player.id}`}>To {player.name}s page</Link>
         </div>
       ))
     }

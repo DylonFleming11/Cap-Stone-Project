@@ -11,10 +11,13 @@ export const indexPlayers = (user) => {
   })
 }
 
-export const showPlayer = (id) => {
+export const showPlayer = (id, user) => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/players/' + id + '/'
+    url: apiUrl + '/players/' + id + '/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
   })
 }
 
