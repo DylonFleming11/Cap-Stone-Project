@@ -1,8 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
- background-image: url("./public/football_w_field.jpg");
+ background-image: url("./images/football_w_field.jpg");
  background-color: #cccccc;
  background-repeat: none;
+ background-repeat: no-repeat;
+ background-size: cover;
 
 }
