@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 
 const GameLogForm = ({ handleChange, handleSubmit, gamelog, playerId }) => (
   <Form onSubmit={handleSubmit}>
@@ -35,8 +35,8 @@ const GameLogForm = ({ handleChange, handleSubmit, gamelog, playerId }) => (
         required
       />
     </Form.Group>
-    <Button type="submit">Add GameLog</Button>
   </Form>
 )
 
+// <Button type="submit">Add GameLog</Button>
 export default GameLogForm
