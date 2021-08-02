@@ -31,10 +31,11 @@ class PlayerCreate extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { msgAlert, user } = this.props
-    const entry = { ...this.state.player, owner: user._id }
-    console.log(user)
-    createPlayer(entry, user)
-      .then(res => this.setState({ createdId: res.data.player._id }))
+    const player = { ...this.state.player, owner: user._id }
+    createPlayer(player, user)
+      .then(res => {
+        this.setState({ createdId: res.data.player.id })
+      })
       .catch(() => msgAlert({
         heading: 'Create Player',
         message: messages.playerCreateSuccess,

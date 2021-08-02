@@ -27,7 +27,6 @@ class ShowPlayer extends Component {
     const { user, match, msgAlert } = this.props
     showPlayer(match.params.id, user)
       .then(res => {
-        console.log(res.data)
         return res
       })
       .then(res => {
@@ -95,7 +94,6 @@ class ShowPlayer extends Component {
   render () {
     const { player } = this.state
     const { user } = this.props
-    console.log('this.state.player ', this.state.player)
     let playerJsx = ''
     if (player === null || player === undefined) {
       playerJsx = 'loading...'
